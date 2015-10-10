@@ -380,7 +380,7 @@ var pizzaElementGenerator = function(i) {
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
-  pizzaImage.src = "images/pizza.png";
+  pizzaImage.src = "dist/pizza-325_medium.png";
   pizzaImage.classList.add("img-responsive");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
@@ -515,16 +515,25 @@ function updatePositions() {
   //Average time to generate last 10 frames: 0.91ms - 1.10ms
   var cachedScrollTop = document.body.scrollTop;
   //document.getElementsByClass more effecient?
+  //console.log(cachedScrollTop);
 
-
-  var items = document.querySelectorAll('.mover');
-  for (var i = 0; i < items.length; i++) {
+  //getElementsByClassName faster than querySelectorAll
+  var items = document.getElementsByClassName('mover');
+  for (var i = 0, lengthItems = items.length; i < lengthItems; i++) {
     //test loop perf
 
     var phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
+    //var moduloArray = [0, 1, 2, 3, 4, 5];
+    //var moduloLength = moduloArray.length;
+    //for (var i = 0; i < moduloLength; i++) {
+
+    //}
     var basic = items[i].basicLeft + 100 * phase;
+    //var basic = items[i].basicLeft * phase;
     //log out these numbers and see
     //console.log(phase, cachedScrollTop / 1250)
+    //console.log(items.length);
+    //console.log(Math.sin(cachedScrollTop / 1250));
 
     //css3 hardware acceleration?
     //transform: translateX();
@@ -540,7 +549,7 @@ function updatePositions() {
     //             }
     //         raf = window.requestAnimationFrame(update);
     //     }
-
+    //items[i].style.transform = "translateX(" + items[i].basicLeft + 100 * phase")";
     items[i].style.left = basic + 'px';
   }
 
@@ -554,6 +563,7 @@ function updatePositions() {
   }
 }
 
+
 // runs updatePositions on scroll
 //#1 optimization
 window.addEventListener('scroll', updatePositions);
@@ -564,18 +574,28 @@ document.addEventListener('DOMContentLoaded', function() {
   var s = 256;
   //reduced amount of pizzas rendered and only used enough to render what is visibil above the fold since they are fixed
   //200 for now.
+  //screen.width or something research
+
+  //Create img all at once
+  //var template = document.getElementById('template').innerHTML;
+  //var htmlString = template;
+
+  //clone node test
+  var elem = document.createElement('img');
   for (var i = 0; i < 50; i++) {
-    var elem = document.createElement('img');
-    elem.className = 'mover';
-    elem.src = "dist/pizza-73.33_small.png";
+    //cloneNode success, renamed all elem references to elem_node
+    var elem_prime = elem.cloneNode(true);
+    //elem.ClassName = 'mover'; changed to elem.classList.add('mover');
+    elem_prime.classList.add('mover');
+    elem_prime.src = "dist/pizza-73.33_small.png";
     //don't use height and width?
     //forced sync layout
     //elem.style.height = "100px";
     //forced sync layout
     //elem.style.width = "73.333px";
-    elem.basicLeft = (i % cols) * s;
-    elem.style.top = (Math.floor(i / cols) * s) + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    elem_prime.basicLeft = (i % cols) * s;
+    elem_prime.style.top = (Math.floor(i / cols) * s) + 'px';
+    document.querySelector("#movingPizzas1").appendChild(elem_prime);
   }
   updatePositions();
 });
