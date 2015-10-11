@@ -550,7 +550,10 @@ function updatePositions() {
     //         raf = window.requestAnimationFrame(update);
     //     }
     //items[i].style.transform = "translateX(" + items[i].basicLeft + 100 * phase")";
-    items[i].style.left = basic + 'px';
+    //items[i].style.left = basic + 'px';
+
+    //transform: translate doesn't trigger a layout
+    items[i].style.transform = "translateX(" + basic + "px)";
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
