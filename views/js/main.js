@@ -520,8 +520,17 @@ function updatePositions() {
 
   //getElementsByClassName faster than querySelectorAll
   var items = document.getElementsByClassName('mover');
-  for (var i = 0, lengthItems = items.length; i < lengthItems; i++) {
+
+  var itemArray = [];
+  //for (var i = 0, lengthItems = items.length; i < lengthItems; i++) {
     //test loop perf
+
+    //array of items to loop through
+    for (var i = 0; i < items.length; i++) {
+      itemArray.push(items[i]);
+    }
+
+    for (var i = 0; i < itemArray.length; i++) {
 
     var phase = Math.sin((cachedScrolling / 1250) + (i % 5));
     //var moduloArray = [0, 1, 2, 3, 4, 5];
@@ -529,7 +538,7 @@ function updatePositions() {
     //for (var i = 0; i < moduloLength; i++) {
 
     //}
-    var basic = items[i].basicLeft + 100 * phase;
+    var basic = itemArray[i].basicLeft + 100 * phase;
 
     //var basic = items[i].basicLeft * phase;
     //log out these numbers and see
@@ -555,7 +564,7 @@ function updatePositions() {
     //items[i].style.left = basic + 'px';
 
     //transform: translate doesn't trigger a layout
-    items[i].style.transform = "translate(" + basic + "px)";
+    itemArray[i].style.transform = "translate(" + basic + "px)";
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
