@@ -454,7 +454,8 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   //function changePizzaSizes(size) {
-    var randomPizzaContainer = document.querySelectorAll(".randomPizzaContainer");
+    //change querySelectorAll to getElementsByClassName
+    var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
     //TODO: Comment,
     for (var i = 0; i < randomPizzaContainer.length; i++) {
       // var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
@@ -513,7 +514,7 @@ function updatePositions() {
   //Average time to generate last 10 frames: 30ms - 35ms
   //cashedScrollTop
   //Average time to generate last 10 frames: 0.91ms - 1.10ms
-  var cachedScrollTop = document.body.scrollTop;
+  var cachedScrolling = document.body.scrollTop;
   //document.getElementsByClass more effecient?
   //console.log(cachedScrollTop);
 
@@ -522,13 +523,14 @@ function updatePositions() {
   for (var i = 0, lengthItems = items.length; i < lengthItems; i++) {
     //test loop perf
 
-    var phase = Math.sin((cachedScrollTop / 1250) + (i % 5));
+    var phase = Math.sin((cachedScrolling / 1250) + (i % 5));
     //var moduloArray = [0, 1, 2, 3, 4, 5];
     //var moduloLength = moduloArray.length;
     //for (var i = 0; i < moduloLength; i++) {
 
     //}
     var basic = items[i].basicLeft + 100 * phase;
+
     //var basic = items[i].basicLeft * phase;
     //log out these numbers and see
     //console.log(phase, cachedScrollTop / 1250)
@@ -553,7 +555,7 @@ function updatePositions() {
     //items[i].style.left = basic + 'px';
 
     //transform: translate doesn't trigger a layout
-    items[i].style.transform = "translateX(" + basic + "px)";
+    items[i].style.transform = "translate(" + basic + "px)";
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -601,4 +603,5 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector("#movingPizzas1").appendChild(elem_prime);
   }
   updatePositions();
-});
+})
+;
