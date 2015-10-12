@@ -359,6 +359,8 @@ var makeRandomPizza = function() {
 };
 
 // returns a DOM element for each pizza
+
+//http://sharedfil.es/performance-tips-w5nBB3ZPjY.html -----Performance Tips-------
 var pizzaElementGenerator = function(i) {
   var pizzaContainer,             // contains pizza title, image and list of ingredients
       pizzaImageContainer,        // contains the pizza image
@@ -530,9 +532,22 @@ function updatePositions() {
       itemArray.push(items[i]);
     }
 
+    //phase array to loop through
+
+    var phaseArray = [0, 1, 2, 3, 4];
+
+    //for (var i = 0; i < phaseArray.length; i++) {
+
+    //}
+
+
     for (var i = 0; i < itemArray.length; i++) {
 
-    var phase = Math.sin((cachedScrolling / 1250) + (i % 5));
+    //var phase = Math.sin((cachedScrolling / 1250) + (i % 5));
+
+    var phase = Math.sin((cachedScrolling / 1250) + phaseArray[0]++);
+    //console.log(phase);
+    //var phase = Math.sin((cachedScrolling / 1250) + phaseArray();
     //var moduloArray = [0, 1, 2, 3, 4, 5];
     //var moduloLength = moduloArray.length;
     //for (var i = 0; i < moduloLength; i++) {
@@ -542,7 +557,8 @@ function updatePositions() {
 
     //var basic = items[i].basicLeft * phase;
     //log out these numbers and see
-    //console.log(phase, cachedScrollTop / 1250)
+    //console.log(phase, cachedScrolling / 1250);
+    //console.log(phase);
     //console.log(items.length);
     //console.log(Math.sin(cachedScrollTop / 1250));
 
@@ -561,9 +577,11 @@ function updatePositions() {
     //         raf = window.requestAnimationFrame(update);
     //     }
     //items[i].style.transform = "translateX(" + items[i].basicLeft + 100 * phase")";
-    //items[i].style.left = basic + 'px';
+    //Rendering ~ 140ms
+    //itemArray[i].style.left = basic + 'px';
 
     //transform: translate doesn't trigger a layout
+    //Rendering ~ 125-130
     itemArray[i].style.transform = "translate(" + basic + "px)";
   }
 
@@ -576,7 +594,6 @@ function updatePositions() {
     logAverageFrame(timesToUpdatePosition);
   }
 }
-
 
 // runs updatePositions on scroll
 //#1 optimization
