@@ -459,7 +459,8 @@ var resizePizzas = function(size) {
     //change querySelectorAll to getElementsByClassName
     var randomPizzaContainer = document.getElementsByClassName("randomPizzaContainer");
     //TODO: Comment,
-    for (var i = 0; i < randomPizzaContainer.length; i++) {
+    var lengthRandomPizzaContainer = randomPizzaContainer.length;
+    for (var i = 0; i < lengthRandomPizzaContainer; i++) {
       // var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       // var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
       // document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
@@ -532,7 +533,8 @@ function updatePositions() {
     //test loop perf
 
     //array of items to loop through
-    for (var i = 0; i < items.length; i++) {
+    var lengthItems = items.length;
+    for (var i = 0; i < lengthItems; i++) {
       itemArray.push(items[i]);
     }
 
@@ -544,8 +546,8 @@ function updatePositions() {
 
     //}
 
-
-    for (var i = 0; i < itemArray.length; i++) {
+    var lengthItemArray = itemArray.length;
+    for (var i = 0; i < lengthItemArray; i++) {
 
     //var phase = Math.sin((cachedScrolling / 1250) + (i % 5));
 
