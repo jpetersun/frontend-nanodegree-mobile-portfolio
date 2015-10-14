@@ -511,6 +511,10 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 function updatePositions() {
   frame++;
   window.performance.mark("mark_start_frame");
+  //TODO: rAF comment by Paul Lewis
+  ticking = false;
+  var currentScrollY = latestKnownScrollY;
+
   //TODO: comment from jank-demo.html
   //document.body.scrollTop
   //Average time to generate last 10 frames: 30ms - 35ms
@@ -582,7 +586,7 @@ function updatePositions() {
 
     //transform: translate doesn't trigger a layout
     //Rendering ~ 125-130
-    itemArray[i].style.transform = "translate(" + basic + "px)";
+    itemArray[i].style.transform = "translateX(" + basic + "px)";
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -592,12 +596,32 @@ function updatePositions() {
   if (frame % 10 === 0) {
     var timesToUpdatePosition = window.performance.getEntriesByName("measure_frame_duration");
     logAverageFrame(timesToUpdatePosition);
+
+
   }
+  //requestAnimationFrame(updatePositions);
 }
+
+//raf test
+var latestKnownScrollY = 0,
+  ticking = false;
+
+function onScroll() {
+  latestKnownScrollY = window.scrollY;
+  requestTick();
+}
+
+function requestTick() {
+  if(!ticking) {
+    requestAnimationFrame(updatePositions);
+  }
+  ticking = true;
+}
+
 
 // runs updatePositions on scroll
 //#1 optimization
-window.addEventListener('scroll', updatePositions);
+window.addEventListener('scroll', onScroll, false);
 
 // Generates the sliding pizzas when the page loads.
 document.addEventListener('DOMContentLoaded', function() {
@@ -613,7 +637,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   //clone node test
   var elem = document.createElement('img');
-  for (var i = 0; i < 50; i++) {
+  for (var i = 0; i < 32; i++) {
     //cloneNode success, renamed all elem references to elem_node
     var elem_prime = elem.cloneNode(true);
     //elem.ClassName = 'mover'; changed to elem.classList.add('mover');
