@@ -361,6 +361,12 @@ var makeRandomPizza = function() {
 // returns a DOM element for each pizza
 
 //http://sharedfil.es/performance-tips-w5nBB3ZPjY.html -----Performance Tips-------
+
+//var domGet = YAHOO.util.Dom.get;
+//var logo = domGet('logo');
+//var header = domGet('header');
+//https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment
+
 var pizzaElementGenerator = function(i) {
   var pizzaContainer,             // contains pizza title, image and list of ingredients
       pizzaImageContainer,        // contains the pizza image
@@ -480,7 +486,7 @@ var resizePizzas = function(size) {
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
-for (var i = 2; i < 50; i++) {
+for (var i = 2; i < 100; i++) {
   var pizzasDiv = document.getElementById("randomPizzas");
   pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
@@ -537,7 +543,7 @@ function updatePositions() {
     for (var i = 0; i < lengthItems; i++) {
       itemArray.push(items[i]);
     }
-
+    //console.log(itemArray);
     //phase array to loop through
 
     var phaseArray = [0, 1, 2, 3, 4];
