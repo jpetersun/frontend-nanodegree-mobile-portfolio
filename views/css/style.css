@@ -26,7 +26,7 @@ form {
 }
 
 #pizzaSize {
-  /**font-weight: 800;*/
+  font-weight: 800;
 }
 
 /**
@@ -41,8 +41,7 @@ position: abosolute;
   /**transform: translateZ(0)*/
   /**transform: translateZ(0);*/
   /**backface-visibility: hidden;*/
-  left: 10%;
-
+  left: 0%;
 }
 
 .randomPizzaContainer {
@@ -59,7 +58,6 @@ position: abosolute;
 }
 
  .container {
-  transform: opacity;
   background-color: rgba(240, 60, 60, 0.8);
   /** remove opacity?*/
 }
