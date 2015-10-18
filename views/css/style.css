@@ -29,25 +29,21 @@ form {
   font-weight: 800;
 }
 
-/**
-position: abosolute;
-*/
-
 .mover {
   position: fixed;
-  /**width: 256px;*/
   z-index: -1;
+  /*promote onto own compositor layer*/
   will-change: transform;
-  /**transform: translateZ(0)*/
-  /**transform: translateZ(0);*/
-  /**backface-visibility: hidden;*/
+  /*place on very left of screen*/
   left: 0%;
 }
 
 .randomPizzaContainer {
   float: left;
   display: flex;
+  /*set width*/
   width: 33.33%;
+  /*set height*/
   height: 325px;
 }
 
@@ -59,5 +55,4 @@ position: abosolute;
 
  .container {
   background-color: rgba(240, 60, 60, 0.8);
-  /** remove opacity?*/
 }
