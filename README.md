@@ -1,6 +1,4 @@
-<snippet>
-  <content><![CDATA[
-# ${1:Website Optimization Project}
+# Website Optimization Project
 
   Optimized a given website to achieve a PageSpeed score above 90 for both
   Mobile and Desktop as well as render at 60 frames per second.
@@ -14,7 +12,7 @@
 
   TODO: put onto gh-pages
 
-  http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio/
+  http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio/<br>
   http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio/pizza.html
 
 
@@ -22,7 +20,7 @@
 
   https://developers.google.com/speed/pagespeed/insights/
 
-## Opimizations - index.html
+## Optimizations - index.html
 
   Adjusted the critical rendering path to reduce the load time of the website
 
@@ -67,8 +65,5 @@
      reduce scripting
    * Used classList.add instead of ClassName to reduce painting
    * Promoted pizza background images onto their own compositor layers with
-     will-change: transform, to offload work onto the GPU to reduce paint times
+     will-change: transform, to offload work onto the GPU to reduce paint times<br>
      Performance on mobile might suffer
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
