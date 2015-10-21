@@ -10,11 +10,8 @@
   Websites are available through gh-pages. The provided URLs can be copied and
   pasted into Google's PageSpeed Insights to be analyzed.
 
-  TODO: put onto gh-pages
 
-  http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio/<br>
-  http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio/pizza.html
-
+  http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio
 
   Paste into here:
 
