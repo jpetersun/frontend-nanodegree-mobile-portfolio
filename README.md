@@ -12,6 +12,8 @@
 
 
   http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio
+  
+  http://jpetersun.github.io/frontend-nanodegree-mobile-portfolio/views/pizza.html
 
   Paste into here:
 
