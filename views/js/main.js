@@ -594,16 +594,19 @@ function updatePositions() {
     //Caches the length of itemArray to be used in for loop
     var lengthItemArray = itemArray.length;
 
+    //Declare variables outside of loop
+    var phase, basicMoveLeft;
+
     //Loop through itemArray and apply visual updates to each node
     for (var i = 0; i < lengthItemArray; i++) {
 
-        var phase = Math.sin((cachedScrolling / 1250) + phaseArray[0]++);
+        phase = Math.sin((cachedScrolling / 1250) + phaseArray[0]++);
 
         /**
          * The method that will maniupulate the images being animated in the background
          * @member {number} basicMoveLeft
          */
-        var basicMoveLeft = itemArray[i].basicLeft + 100 * phase;
+        basicMoveLeft = itemArray[i].basicLeft + 100 * phase;
 
         /**
          * Replaced style.left with transform: translateX() to not trigger a layout
@@ -670,9 +673,13 @@ document.addEventListener('DOMContentLoaded', function() {
      * since their position is fixed.
      * @function function
      */
+
+    //Declare variable outside of for loop.
+    var elem_prime;
+
     for (var i = 0; i < 32; i++) {
         //renamed all elem references to elem_node
-        var elem_prime = elem.cloneNode(true);
+        elem_prime = elem.cloneNode(true);
         //ClassName changed to more effecient method classList.add
         elem_prime.classList.add('mover');
         //Resized image with grunt-responsive-images
