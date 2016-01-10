@@ -676,6 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Declare variable outside of for loop.
     var elem_prime;
+    //Access ID once by storing it in a variable.
     var movingPizzas = document.getElementById('movingPizzas1');
 
     for (var i = 0; i < 32; i++) {
