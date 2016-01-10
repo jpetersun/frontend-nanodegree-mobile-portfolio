@@ -676,6 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Declare variable outside of for loop.
     var elem_prime;
+    var movingPizzas = document.getElementById('movingPizzas1');
 
     for (var i = 0; i < 32; i++) {
         //renamed all elem references to elem_node
@@ -691,7 +692,7 @@ document.addEventListener('DOMContentLoaded', function() {
         elem_prime.basicLeft = (i % cols) * s;
         elem_prime.style.top = (Math.floor(i / cols) * s) + 'px';
         //Append the cloned nodes
-        document.querySelector("#movingPizzas1").appendChild(elem_prime);
+        movingPizzas.appendChild(elem_prime);
     }
     updatePositions();
 });
