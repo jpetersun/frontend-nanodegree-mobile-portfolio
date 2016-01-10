@@ -66,3 +66,5 @@
    * Promoted pizza background images onto their own compositor layers with
      will-change: transform, to offload work onto the GPU to reduce paint times<br>
      Performance on mobile might suffer
+   * Enable hardware accelerated CSS with tranform: translateZ(0);
+   * Hardware acceleration with backface-visibility: hidden, for not so powerful equipment

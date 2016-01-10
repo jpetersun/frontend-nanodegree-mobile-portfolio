@@ -34,6 +34,10 @@ form {
   z-index: -1;
   /*promote onto own compositor layer*/
   will-change: transform;
+  /*Enable hardware accelerated CSS*/
+  transform: translateZ(0);
+  /*Hardware acceleration for not so powerful equipment*/
+  backface-visibility: hidden;
   /*place on very left of screen*/
   left: 0%;
 }
